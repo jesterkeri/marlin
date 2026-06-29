@@ -89,6 +89,7 @@ export class MarlinEngine {
   private readonly payer: Keypair;
   private readonly injectedCompleter: ChatCompleter | undefined;
   private lastGoodTip: TipDistribution | undefined;
+  private cachedTipAccounts: string[] | undefined; // Jito tip accounts are static — fetch once, reuse (the public block engine rate-limits to 1 req/s)
   private lastNextLeader: NextLeader | undefined;
   private lastLeaderFetchAt = 0;
   private bundleUnsub: (() => void) | undefined;
@@ -342,11 +343,34 @@ export class MarlinEngine {
 
   // --- Submission ------------------------------------------------------------
 
+  /**
+   * Jito tip accounts (static) fetched ONCE and cached. The public, keyless Jito block engine
+   * rate-limits to ~1 request/sec, so re-fetching per submission trips it; we also back off and
+   * retry when the engine reports a rate-limit/back-off rather than failing the whole run.
+   */
+  private async tipAccountsOnce(): Promise<string[]> {
+    if (this.cachedTipAccounts && this.cachedTipAccounts.length > 0) return this.cachedTipAccounts;
+    let lastErr = 'unknown';
+    for (let attempt = 0; attempt < 5; attempt++) {
+      const res = await getTipAccounts(this.searcher);
+      if (!('error' in res) && res.length > 0) {
+        this.cachedTipAccounts = res;
+        return res;
+      }
+      lastErr = 'error' in res ? res.error : 'block engine returned no tip accounts';
+      if (/rate limit|exhaust|back-?off/i.test(lastErr) && attempt < 4) {
+        await sleep(1300); // honor the engine's ~1s back-off with margin
+        continue;
+      }
+      break;
+    }
+    throw new Error(`[engine] tip-accounts fetch failed: ${lastErr}`);
+  }
+
   /** Run one submission through the orchestrator. Returns the terminal result. */
   async submitOnce(intentKey: string, opts: { fault?: FaultMode } = {}): Promise<RunResult> {
     const submissionId = this.repo.recordSubmission({ idempotencyKey: intentKey });
-    const tipAccounts = await getTipAccounts(this.searcher);
-    if ('error' in tipAccounts || tipAccounts.length === 0) throw new Error('[engine] no tip accounts');
+    const tipAccounts = await this.tipAccountsOnce();
     const completer = this.injectedCompleter ?? makeOpenRouterCompleter({ apiKey: this.cfg.openRouterApiKey, baseURL: this.cfg.openRouterBaseUrl });
 
     // The tip distribution that drove the CURRENT attempt's tip. Scoped to THIS submitOnce

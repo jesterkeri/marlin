@@ -13,7 +13,8 @@
     "agent:smoke": "tsx scripts/agentSmoke.ts",
     "run:batch": "tsx scripts/runBatch.ts",
     "demo": "tsx scripts/demo.ts",
-    "test:geyser": "tsx scripts/testGeyser.ts"
+    "test:geyser": "tsx scripts/testGeyser.ts",
+    "verify:env": "tsx scripts/verifyEnv.ts"
   },
   "dependencies": {
     "@solana/web3.js": "^1.95.3",

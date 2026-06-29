@@ -71,9 +71,16 @@ export async function sendBundle(client: SearcherClient, b: JitoBundle): Promise
   return res.ok ? { bundleUuid: res.value } : { error: res.error.message };
 }
 
-/** Mainnet searcher client — no auth keypair required. */
+/**
+ * Mainnet searcher client — no auth keypair required. jito-ts hands the URL straight to
+ * the gRPC channel, whose DNS resolver chokes on an `https://`/`http://` scheme ("Failed
+ * to parse DNS address dns:https://…"), so strip the scheme + trailing slash and pass the
+ * bare host (gRPC applies TLS on :443 itself).
+ */
 export function makeSearcherClient(blockEngineUrl: string): SearcherClient {
-  return searcher.searcherClient(blockEngineUrl);
+  let host = blockEngineUrl.trim().replace(/^https?:\/\//, '').replace(/\/+$/, '');
+  if (!/:\d+$/.test(host)) host += ':443'; // grpc-js dns target needs an explicit port
+  return searcher.searcherClient(host);
 }
 
 /**
