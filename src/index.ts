@@ -160,6 +160,8 @@ export class MarlinEngine {
         token: cfg.geyserToken,
         handlers,
         onReconcileNeeded: (sig) => void this.reconcile(sig),
+        onFatal: (err) =>
+          logger.error({ err: err.message }, '[engine] Geyser stream fatally rejected (auth/balance) — check GEYSER_TOKEN and the provider balance/credits'),
       });
     }
   }

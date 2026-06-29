@@ -23,6 +23,16 @@ export function blockFullnessFrom(executedTransactionCount: string, reference = 
   return Math.min(1, n / reference);
 }
 
+/**
+ * Pure: is this gRPC error one that reconnecting can NEVER fix? 7 = PERMISSION_DENIED,
+ * 16 = UNAUTHENTICATED (a SolInfra "insufficient balance" rejection arrives as 7). Such
+ * errors must stop the ingestor instead of looping the reconnect forever. Testable.
+ */
+export function isNonRetryableGrpcError(err: unknown): boolean {
+  const code = (err as { code?: number } | null | undefined)?.code;
+  return code === 7 || code === 16;
+}
+
 // The package is CJS (`exports.default = Client`); under NodeNext an ESM default
 // import binds the whole module namespace, so the class itself is `.default`.
 const Client = GeyserPkg.default;
@@ -50,6 +60,8 @@ export interface GeyserOpts {
   probeWindowMs?: number;
   /** Called when a signature is newly watched — kick an RPC getSignatureStatuses reconcile to cover the pre-rewrite window. */
   onReconcileNeeded?: (sig: string) => void;
+  /** Called on a NON-retryable stream rejection (auth/balance) — reconnecting can't fix it, so we stop and surface it. */
+  onFatal?: (err: Error) => void;
 }
 
 /**
@@ -210,6 +222,10 @@ export class GeyserIngestor {
   private wire(stream: Stream): void {
     stream.on('data', (u: SubscribeUpdate) => this.onUpdate(u));
     stream.on('error', (err: unknown) => {
+      if (isNonRetryableGrpcError(err)) {
+        this.fatal(err); // auth/balance — stop, surface, do NOT loop reconnect
+        return;
+      }
       logger.error({ err }, '[geyser] stream error');
       this.scheduleReconnect();
     });
@@ -293,25 +309,42 @@ export class GeyserIngestor {
     }
   }
 
-  private teardownStreams(): void {
-    for (const s of this.slotStreams) {
-      try {
-        s.removeAllListeners();
-        s.cancel();
-      } catch {
-        /* ignore */
-      }
+  /**
+   * Cancel a stream safely. `cancel()` makes grpc-js emit a `'Cancelled on client'` 'error'
+   * event; we remove the real listeners first, then attach a no-op 'error' handler so that
+   * cancel-induced event can't surface as an UNHANDLED 'error' and crash the process.
+   */
+  private static cancelStream(s: Stream): void {
+    try {
+      s.removeAllListeners();
+      s.on('error', () => undefined); // swallow the 'Cancelled on client' error cancel() triggers
+      s.cancel();
+    } catch {
+      /* ignore */
     }
+  }
+
+  private teardownStreams(): void {
+    for (const s of this.slotStreams) GeyserIngestor.cancelStream(s);
     this.slotStreams = [];
     if (this.txStream) {
-      try {
-        this.txStream.removeAllListeners();
-        this.txStream.cancel();
-      } catch {
-        /* ignore */
-      }
+      GeyserIngestor.cancelStream(this.txStream);
       this.txStream = undefined;
     }
+  }
+
+  /**
+   * A non-retryable rejection (auth/balance): stop for good, tear down, and surface it via
+   * `onFatal`. Reconnecting would just hammer the endpoint forever with the same error.
+   */
+  private fatal(err: unknown): void {
+    if (this.stopped) return; // first fatal wins; a sibling stream's identical error is ignored
+    this.stopped = true;
+    this.clearTimers();
+    this.teardownStreams();
+    const e = err instanceof Error ? err : new Error(String(err));
+    logger.error({ err: e.message }, '[geyser] FATAL stream rejection (auth/balance) — not reconnecting');
+    this.opts.onFatal?.(e);
   }
 
   private scheduleReconnect(): void {

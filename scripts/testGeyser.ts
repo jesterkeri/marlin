@@ -16,6 +16,7 @@ if (!endpoint) {
   console.error('GEYSER_URL is not set in .env');
   process.exit(1);
 }
+const url: string = endpoint; // narrowed to string for use inside the closures below
 
 let slots = 0;
 let done = false;
@@ -30,11 +31,12 @@ const g = new GeyserIngestor({
       if (slots >= 5) finish(true);
     },
   },
+  onFatal: (err) => finish(false, err.message), // auth/balance rejection — report it cleanly, don't loop
 });
 
-const timer = setTimeout(() => finish(false), 15_000);
+const timer = setTimeout(() => finish(false, 'no slots within 15s (silent gating, or wrong endpoint/token)'), 15_000);
 
-function finish(ok: boolean): void {
+function finish(ok: boolean, reason?: string): void {
   if (done) return;
   done = true;
   clearTimeout(timer);
@@ -43,8 +45,9 @@ function finish(ok: boolean): void {
     console.log('\n  gRPC STREAMS WORK on this plan. Marlin is unblocked — fill the rest of .env and run `npm run run:batch`.');
     process.exit(0);
   } else {
-    console.log('\n  No slots in 15s. Likely causes: gRPC gated on the Free plan (needs a plan/credits),');
-    console.log('  a bad token, or the endpoint needs an https:// prefix (try GEYSER_URL=https://' + endpoint + ').');
+    if (reason) console.log(`\n  gRPC not streaming: ${reason}`);
+    console.log('  Most likely the account needs a funded balance (SolInfra PAYG minimum is $0.06) or the bounty credits applied.');
+    console.log('  If you just funded/were credited, simply re-run. To try the bare endpoint form: GEYSER_URL=' + url.replace(/^https:\/\//, ''));
     process.exit(1);
   }
 }

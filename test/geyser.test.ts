@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { CommitmentLevel } from '@triton-one/yellowstone-grpc';
 import { buildSubscribeRequest, buildSlotsRequest, buildTxRequest, buildPerCommitmentSlotsRequest, commitmentName } from '../src/ingest/geyserRequest.js';
-import { GeyserIngestor, blockFullnessFrom, FULL_BLOCK_TX_REFERENCE } from '../src/ingest/geyser.js';
+import { GeyserIngestor, blockFullnessFrom, FULL_BLOCK_TX_REFERENCE, isNonRetryableGrpcError } from '../src/ingest/geyser.js';
 import {
   SlotDeduper,
   LatestWins,
@@ -126,6 +126,16 @@ test('watchSignature: a throwing reconcile hook is isolated (backstop never disr
   assert.equal(called, 1);
   assert.doesNotThrow(() => g.watchSignature('SIG')); // already-watched path also reconciles, still isolated
   assert.equal(called, 2);
+});
+
+test('isNonRetryableGrpcError: auth/balance codes stop the ingestor; transient codes retry', () => {
+  assert.equal(isNonRetryableGrpcError({ code: 7 }), true); // PERMISSION_DENIED (incl. "insufficient balance")
+  assert.equal(isNonRetryableGrpcError({ code: 16 }), true); // UNAUTHENTICATED
+  assert.equal(isNonRetryableGrpcError({ code: 14 }), false); // UNAVAILABLE — retryable
+  assert.equal(isNonRetryableGrpcError({ code: 1 }), false); // CANCELLED — retryable
+  assert.equal(isNonRetryableGrpcError(new Error('boom')), false); // no code → retryable
+  assert.equal(isNonRetryableGrpcError(undefined), false);
+  assert.equal(isNonRetryableGrpcError(null), false);
 });
 
 test('blockFullnessFrom: clamps executed-tx count to 0..1 against the reference', () => {
