@@ -1,0 +1,27 @@
+# dependencies
+node_modules/
+
+# secrets / local env (NEVER commit real creds — keep only the example)
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# build output
+dist/
+
+# runtime data / write-ahead log
+data/
+*.wal
+
+# logs
+*.log
+npm-debug.log*
+
+# local tooling / agent config (not part of the deliverable)
+.claude/
+.mcp.json
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
