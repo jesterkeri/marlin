@@ -33,7 +33,13 @@ npm run db:init          # apply the schema to local Postgres
 npm run dev              # start the engine + read dashboard
 ```
 
-**No creds? See it work anyway.** `npm test` verifies the entire decision/safety surface offline (76 tests), and `npm run demo` runs the *real* engine path end-to-end on in-memory fakes — only the network boundary (RPC/Jito/Geyser/Postgres/LLM) is stubbed. The live, explorer-verifiable run (`npm run run:batch`) needs the creds above plus a host that holds the persistent gRPC stream.
+**No creds? See it work anyway.** `npm test` verifies the entire decision/safety surface offline (76 tests), and `npm run demo` runs the *real* engine path end-to-end on in-memory fakes — only the network boundary (RPC/Jito/Geyser/Postgres/LLM) is stubbed. The live run (`npm run run:batch`) needs the creds above plus a host that holds the persistent gRPC stream.
+
+## Live mainnet run
+
+`scripts/runBatch.ts` was executed against **mainnet-beta**: **10 real submissions, 37 attempts** through the full pipeline (see `lifecycle-report.md`, included unedited). Every layer ran live — Geyser streaming, **dynamic tips from the live Jito tip-floor** (6.38× floor, n=68), failure classification, the **bounded AI retry**, and the **forced blockhash-expiry**.
+
+**Land rate was 0%, and the log reports it plainly — no cherry-picking.** Tips were not the cause: they ran 6.38× the floor, and even a max-cap **200,000-lamport** tip (≈150× the floor) did not land. The bundles did not reach a producing Jito leader through the **free, keyless public block engine** (1 req/s rate limit, no authenticated leader access). Reliable landing requires an **authenticated Jito searcher keypair**, which this run did not have. The log is published as honest evidence that the stack runs end-to-end on real infrastructure and exercises its complete failure-handling path under live conditions.
 
 ## Verification gates
 

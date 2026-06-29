@@ -1,0 +1,1009 @@
+{
+  "generatedAt": "2026-06-29T17:06:13.227Z",
+  "summary": {
+    "submissions": 10,
+    "attempts": 37,
+    "landed": 0,
+    "failedAttempts": 35
+  },
+  "scorecard": {
+    "landRate": 0,
+    "landedSubmissions": 0,
+    "totalSubmissions": 10,
+    "avgAttemptsPerSubmission": 3.7,
+    "failureClassCounts": {
+      "ExpiredBlockhash": 1,
+      "BundleFailure": 34
+    },
+    "latencyMs": {
+      "submittedToProcessed": {
+        "p50": 0,
+        "p95": 0,
+        "n": 0
+      },
+      "processedToConfirmed": {
+        "p50": 0,
+        "p95": 0,
+        "n": 0
+      },
+      "confirmedToFinalized": {
+        "p50": 0,
+        "p95": 0,
+        "n": 0
+      }
+    },
+    "tip": {
+      "avgChosenLamports": 7475,
+      "avgFloorLamports": 1317,
+      "avgEfficiency": 6.38,
+      "n": 68
+    }
+  },
+  "submissions": [
+    {
+      "idempotencyKey": "batch-0",
+      "attempts": [
+        {
+          "attemptNo": 1,
+          "signature": "4FcWDNiG54sokADRR7Xbjtie2Qbv5ZWzf6PEA3VsyZ3umQZhHJz6BGa7RLR77qFU1CbFdzTjQBncYFtkVZhDJXiT",
+          "tipLamports": 3046,
+          "expiry": {
+            "lastValidBlockHeight": 407774882,
+            "expiryBlockHeight": 407774884
+          },
+          "stages": [
+            {
+              "stage": "submitted",
+              "slot": null,
+              "ts": "2026-06-29T10:52:34.037Z",
+              "latencyDeltaMs": null
+            }
+          ],
+          "deltas": {},
+          "failure": {
+            "classification": "ExpiredBlockhash",
+            "signal": "blockhash past 150-block validity window",
+            "slot": null
+          },
+          "bundleEventKinds": [],
+          "landed": false
+        },
+        {
+          "attemptNo": 2,
+          "signature": "3fei7KxwcvL5TK3eqSjLuGaKd33DUniqisPvmxGwA7dCkRFWyi3Ap8tgyyQoWQMUY7hhgKS4P5GzzHUhkCP9yWMd",
+          "tipLamports": 1001,
+          "expiry": {
+            "lastValidBlockHeight": 407775053,
+            "expiryBlockHeight": null
+          },
+          "stages": [
+            {
+              "stage": "submitted",
+              "slot": null,
+              "ts": "2026-06-29T10:52:39.283Z",
+              "latencyDeltaMs": null
+            }
+          ],
+          "deltas": {},
+          "failure": {
+            "classification": "BundleFailure",
+            "signal": "not observed on-chain in window",
+            "slot": null
+          },
+          "bundleEventKinds": [],
+          "landed": false
+        },
+        {
+          "attemptNo": 3,
+          "signature": "5zHoNTecZiBFs9ivpycPkbhoF5ck8NcUuyBktQag1FDLkLgpiFaMZ3tZRWT4Gp7t4F2Eo5Ej3DSKLki7G3QeNmNU",
+          "tipLamports": 8897,
+          "expiry": {
+            "lastValidBlockHeight": 407775172,
+            "expiryBlockHeight": null
+          },
+          "stages": [
+            {
+              "stage": "submitted",
+              "slot": null,
+              "ts": "2026-06-29T10:53:28.222Z",
+              "latencyDeltaMs": null
+            }
+          ],
+          "deltas": {},
+          "failure": {
+            "classification": "BundleFailure",
+            "signal": "not observed on-chain in window",
+            "slot": null
+          },
+          "bundleEventKinds": [],
+          "landed": false
+        },
+        {
+          "attemptNo": 4,
+          "signature": "CPjHhU4ELiYUpjoLUKdwKsbueT8DGmdhbivop9BhmPjuTGCk9thh1ubD5wzHx2Dwv4tisywsSo67zkJ6NPdVL6U",
+          "tipLamports": 1954,
+          "expiry": {
+            "lastValidBlockHeight": 407775295,
+            "expiryBlockHeight": null
+          },
+          "stages": [
+            {
+              "stage": "submitted",
+              "slot": null,
+              "ts": "2026-06-29T10:54:32.354Z",
+              "latencyDeltaMs": null
+            }
+          ],
+          "deltas": {},
+          "failure": {
+            "classification": "BundleFailure",
+            "signal": "not observed on-chain in window",
+            "slot": null
+          },
+          "bundleEventKinds": [],
+          "landed": false
+        }
+      ]
+    },
+    {
+      "idempotencyKey": "batch-1",
+      "attempts": [
+        {
+          "attemptNo": 1,
+          "signature": "42EqS3AQ5EvFmXCX5cRN3LhF9477Lh7kDEP6oTC4AChEyWFMCDSPYggRtPHyq4eYbV462nzsrFNzWh6PN8aCkS1v",
+          "tipLamports": 1941,
+          "expiry": {
+            "lastValidBlockHeight": 407775412,
+            "expiryBlockHeight": null
+          },
+          "stages": [
+            {
+              "stage": "submitted",
+              "slot": null,
+              "ts": "2026-06-29T10:55:31.425Z",
+              "latencyDeltaMs": null
+            }
+          ],
+          "deltas": {},
+          "failure": {
+            "classification": "BundleFailure",
+            "signal": "not observed on-chain in window",
+            "slot": null
+          },
+          "bundleEventKinds": [],
+          "landed": false
+        },
+        {
+          "attemptNo": 2,
+          "signature": "5qumE8hUz2sun6tgFvAGqzbPxzseykzxRCijsD4C8jVzAVoZcoMCe86QUbReuFy5nL6oZMaXHtUmnCcRk262G1N6",
+          "tipLamports": 1006,
+          "expiry": {
+            "lastValidBlockHeight": 407775536,
+            "expiryBlockHeight": null
+          },
+          "stages": [
+            {
+              "stage": "submitted",
+              "slot": null,
+              "ts": "2026-06-29T10:56:45.492Z",
+              "latencyDeltaMs": null
+            }
+          ],
+          "deltas": {},
+          "failure": {
+            "classification": "BundleFailure",
+            "signal": "not observed on-chain in window",
+            "slot": null
+          },
+          "bundleEventKinds": [],
+          "landed": false
+        },
+        {
+          "attemptNo": 3,
+          "signature": "yzuFED1pwNhtnpXUPzSTJ9jEJZQtby1ZhqxSh8ryBy9r7NYafKhKLAtUEQGFVwmnPYYexEctRrqi4JEJRGeRchX",
+          "tipLamports": 3955,
+          "expiry": {
+            "lastValidBlockHeight": 407775659,
+            "expiryBlockHeight": null
+          },
+          "stages": [
+            {
+              "stage": "submitted",
+              "slot": null,
+              "ts": "2026-06-29T10:57:48.985Z",
+              "latencyDeltaMs": null
+            }
+          ],
+          "deltas": {},
+          "failure": {
+            "classification": "BundleFailure",
+            "signal": "not observed on-chain in window",
+            "slot": null
+          },
+          "bundleEventKinds": [],
+          "landed": false
+        },
+        {
+          "attemptNo": 4,
+          "signature": "2on5SaQcxV8k1bodL6MzVuX4TygUzERFReFW8wLc7FHCcVhXmtcnWtfNb6tsU2kY4kb4CAd11pi8R2f87LifU8gy",
+          "tipLamports": 3637,
+          "expiry": {
+            "lastValidBlockHeight": 407775779,
+            "expiryBlockHeight": null
+          },
+          "stages": [
+            {
+              "stage": "submitted",
+              "slot": null,
+              "ts": "2026-06-29T10:59:00.591Z",
+              "latencyDeltaMs": null
+            }
+          ],
+          "deltas": {},
+          "failure": {
+            "classification": "BundleFailure",
+            "signal": "not observed on-chain in window",
+            "slot": null
+          },
+          "bundleEventKinds": [],
+          "landed": false
+        }
+      ]
+    },
+    {
+      "idempotencyKey": "batch-2",
+      "attempts": [
+        {
+          "attemptNo": 1,
+          "signature": "5Z1zZZbs9qsjEDwsjEsmm3PiS75XiQqirbtKCuyhV3wXStba4XsnRZm8dyBMkVGDrDqtkgLg46kE4YxMfCSFnvQL",
+          "tipLamports": 3150,
+          "expiry": {
+            "lastValidBlockHeight": 407775898,
+            "expiryBlockHeight": null
+          },
+          "stages": [
+            {
+              "stage": "submitted",
+              "slot": null,
+              "ts": "2026-06-29T11:00:12.910Z",
+              "latencyDeltaMs": null
+            }
+          ],
+          "deltas": {},
+          "failure": {
+            "classification": "BundleFailure",
+            "signal": "not observed on-chain in window",
+            "slot": null
+          },
+          "bundleEventKinds": [],
+          "landed": false
+        },
+        {
+          "attemptNo": 2,
+          "signature": "3EK4KfHRrXMFWvGT2wSCkpcHmwZ5GMyU6J3raQM1BGqDQJT67rgYx2qSiJKFnGqnMP2r8p2H1YQWuEU7hya4GCFd",
+          "tipLamports": 1761,
+          "expiry": {
+            "lastValidBlockHeight": 407776018,
+            "expiryBlockHeight": null
+          },
+          "stages": [
+            {
+              "stage": "submitted",
+              "slot": null,
+              "ts": "2026-06-29T11:03:51.798Z",
+              "latencyDeltaMs": null
+            }
+          ],
+          "deltas": {},
+          "failure": {
+            "classification": "BundleFailure",
+            "signal": "not observed on-chain in window",
+            "slot": null
+          },
+          "bundleEventKinds": [],
+          "landed": false
+        },
+        {
+          "attemptNo": 3,
+          "signature": "2mH43gC3HZG1tJgZBGz3sFEWshuLkrsEQbb8Mx9dutv3SS6EBSyjDVDDeNhDc6z9nh464EpKpFufQrEMmqEwEdZv",
+          "tipLamports": 1741,
+          "expiry": {
+            "lastValidBlockHeight": 407776142,
+            "expiryBlockHeight": null
+          },
+          "stages": [
+            {
+              "stage": "submitted",
+              "slot": null,
+              "ts": "2026-06-29T11:05:13.611Z",
+              "latencyDeltaMs": null
+            }
+          ],
+          "deltas": {},
+          "failure": {
+            "classification": "BundleFailure",
+            "signal": "not observed on-chain in window",
+            "slot": null
+          },
+          "bundleEventKinds": [],
+          "landed": false
+        },
+        {
+          "attemptNo": 4,
+          "signature": "wpTG6eKK68hJ7ws8j3X6GDK9Zs2XxNNvRbotRKwArnG9FqsXs6AG5RZ9KbagwaCA1s79fnNiLhkDEjrFmFGkKqy",
+          "tipLamports": 3000,
+          "expiry": {
+            "lastValidBlockHeight": 407776284,
+            "expiryBlockHeight": null
+          },
+          "stages": [
+            {
+              "stage": "submitted",
+              "slot": null,
+              "ts": "2026-06-29T11:06:21.201Z",
+              "latencyDeltaMs": null
+            }
+          ],
+          "deltas": {},
+          "failure": {
+            "classification": "BundleFailure",
+            "signal": "not observed on-chain in window",
+            "slot": null
+          },
+          "bundleEventKinds": [],
+          "landed": false
+        }
+      ]
+    },
+    {
+      "idempotencyKey": "batch-3",
+      "attempts": [
+        {
+          "attemptNo": 1,
+          "signature": "3UuvukMPtUfMFVySDrgYuWsFw24yVrBfvFusbg1Z6fi4c1gxsoKpMV1e4PjUQMrJT7UiHgsCWU3YvJie4WizVySk",
+          "tipLamports": 2414,
+          "expiry": {
+            "lastValidBlockHeight": 407776400,
+            "expiryBlockHeight": null
+          },
+          "stages": [
+            {
+              "stage": "submitted",
+              "slot": null,
+              "ts": "2026-06-29T11:07:28.740Z",
+              "latencyDeltaMs": null
+            }
+          ],
+          "deltas": {},
+          "failure": {
+            "classification": "BundleFailure",
+            "signal": "not observed on-chain in window",
+            "slot": null
+          },
+          "bundleEventKinds": [],
+          "landed": false
+        },
+        {
+          "attemptNo": 2,
+          "signature": "4e94Qw4bZvTXFjEPgpS6PQc1ydqJroidt6pGxbXxtzHvxNPgdyNjaNWqeF579qvpA1pbuxsx3CyLHRaFSZ7Xo4Uf",
+          "tipLamports": 2000,
+          "expiry": {
+            "lastValidBlockHeight": 407776519,
+            "expiryBlockHeight": null
+          },
+          "stages": [
+            {
+              "stage": "submitted",
+              "slot": null,
+              "ts": "2026-06-29T16:41:48.641Z",
+              "latencyDeltaMs": null
+            }
+          ],
+          "deltas": {},
+          "failure": {
+            "classification": "BundleFailure",
+            "signal": "not observed on-chain in window",
+            "slot": null
+          },
+          "bundleEventKinds": [],
+          "landed": false
+        },
+        {
+          "attemptNo": 3,
+          "signature": "HsozGR6ZKzqXX7n8UvNqqjXFLHNyHQQvNMvqFguz1kCaTswK7ncrgpRLMW3wuQzfQh8RHyAP7jkqHGVNqpPpwDd",
+          "tipLamports": 2303,
+          "expiry": {
+            "lastValidBlockHeight": 407776634,
+            "expiryBlockHeight": null
+          },
+          "stages": [
+            {
+              "stage": "submitted",
+              "slot": null,
+              "ts": "2026-06-29T16:42:37.489Z",
+              "latencyDeltaMs": null
+            }
+          ],
+          "deltas": {},
+          "failure": {
+            "classification": "BundleFailure",
+            "signal": "not observed on-chain in window",
+            "slot": null
+          },
+          "bundleEventKinds": [],
+          "landed": false
+        },
+        {
+          "attemptNo": 4,
+          "signature": "3NyXujPiCwfLMhjevTyzQnxF1wDUcbuhKTtaEdHPGgr1thVfvbZe64iXmLWtbvPaj2uGdjhSZGzHbQGQFrbbmUSB",
+          "tipLamports": 200000,
+          "expiry": {
+            "lastValidBlockHeight": 407776759,
+            "expiryBlockHeight": null
+          },
+          "stages": [
+            {
+              "stage": "submitted",
+              "slot": null,
+              "ts": "2026-06-29T16:43:26.805Z",
+              "latencyDeltaMs": null
+            }
+          ],
+          "deltas": {},
+          "failure": {
+            "classification": "BundleFailure",
+            "signal": "not observed on-chain in window",
+            "slot": null
+          },
+          "bundleEventKinds": [],
+          "landed": false
+        }
+      ]
+    },
+    {
+      "idempotencyKey": "batch-4",
+      "attempts": [
+        {
+          "attemptNo": 1,
+          "signature": "2xA3bsLkdGkmxttpwRm4aBfPXkDtpzg7U5GMEf5grfvSGfFHghWZ3FgFXnHLYuD9MWP1Ct8nbj9nVn2oBfzoicMe",
+          "tipLamports": 1001,
+          "expiry": {
+            "lastValidBlockHeight": 407776885,
+            "expiryBlockHeight": null
+          },
+          "stages": [
+            {
+              "stage": "submitted",
+              "slot": null,
+              "ts": "2026-06-29T16:44:13.615Z",
+              "latencyDeltaMs": null
+            }
+          ],
+          "deltas": {},
+          "failure": {
+            "classification": "BundleFailure",
+            "signal": "not observed on-chain in window",
+            "slot": null
+          },
+          "bundleEventKinds": [],
+          "landed": false
+        },
+        {
+          "attemptNo": 2,
+          "signature": "36APihKk3oZAcaMtxjejMZfk5VGJFhvzxe9HaU4JxhGWMnWVarmrPYKzNwn8CCtkhEsgr5zgDjDxJzBb4g5dXzBD",
+          "tipLamports": 9610,
+          "expiry": {
+            "lastValidBlockHeight": 407777007,
+            "expiryBlockHeight": null
+          },
+          "stages": [
+            {
+              "stage": "submitted",
+              "slot": null,
+              "ts": "2026-06-29T16:45:03.533Z",
+              "latencyDeltaMs": null
+            }
+          ],
+          "deltas": {},
+          "failure": {
+            "classification": "BundleFailure",
+            "signal": "not observed on-chain in window",
+            "slot": null
+          },
+          "bundleEventKinds": [],
+          "landed": false
+        },
+        {
+          "attemptNo": 3,
+          "signature": "2TG2TBUypiD1qR2HpHwUimMdUpavJZtbATfJf2rrz3ocVuzCCv9khysbAXMBvuyPAQSpz1qXKvrj9a4HDZmMEoX4",
+          "tipLamports": 7527,
+          "expiry": {
+            "lastValidBlockHeight": 407777130,
+            "expiryBlockHeight": null
+          },
+          "stages": [
+            {
+              "stage": "submitted",
+              "slot": null,
+              "ts": "2026-06-29T16:48:02.700Z",
+              "latencyDeltaMs": null
+            }
+          ],
+          "deltas": {},
+          "failure": {
+            "classification": "BundleFailure",
+            "signal": "not observed on-chain in window",
+            "slot": null
+          },
+          "bundleEventKinds": [],
+          "landed": false
+        },
+        {
+          "attemptNo": 4,
+          "signature": "5r8wuaRYufponLJMySmj9keso8ESGjYR29KZ4g7dETiNV85YbNm8PCRC7doc1LpiwePZNfAEZbfpQmyvz6yauasT",
+          "tipLamports": 2639,
+          "expiry": {
+            "lastValidBlockHeight": 407777262,
+            "expiryBlockHeight": null
+          },
+          "stages": [
+            {
+              "stage": "submitted",
+              "slot": null,
+              "ts": "2026-06-29T16:48:55.335Z",
+              "latencyDeltaMs": null
+            }
+          ],
+          "deltas": {},
+          "failure": {
+            "classification": "BundleFailure",
+            "signal": "not observed on-chain in window",
+            "slot": null
+          },
+          "bundleEventKinds": [],
+          "landed": false
+        }
+      ]
+    },
+    {
+      "idempotencyKey": "batch-5",
+      "attempts": [
+        {
+          "attemptNo": 1,
+          "signature": "4Zgaa2vAVatZsteQnCdUyy2JrLrcoDT1WztzsnUo2tB6cYKqzpFWL9NcB93CF24ZjxkEbUf6S7wPeaUf18712WKv",
+          "tipLamports": 2874,
+          "expiry": {
+            "lastValidBlockHeight": 407777382,
+            "expiryBlockHeight": null
+          },
+          "stages": [
+            {
+              "stage": "submitted",
+              "slot": null,
+              "ts": "2026-06-29T16:49:42.450Z",
+              "latencyDeltaMs": null
+            }
+          ],
+          "deltas": {},
+          "failure": {
+            "classification": "BundleFailure",
+            "signal": "not observed on-chain in window",
+            "slot": null
+          },
+          "bundleEventKinds": [],
+          "landed": false
+        },
+        {
+          "attemptNo": 2,
+          "signature": "2dyKTMDRVGuv3vAkAE34jnPVaws77qNtgCBVpSeBy93uWLc59GSqAAdzgh6Dv1g84CxCbGs259G5e4Bnm2GsK6HW",
+          "tipLamports": 2474,
+          "expiry": {
+            "lastValidBlockHeight": 407777498,
+            "expiryBlockHeight": null
+          },
+          "stages": [
+            {
+              "stage": "submitted",
+              "slot": null,
+              "ts": "2026-06-29T16:50:32.530Z",
+              "latencyDeltaMs": null
+            }
+          ],
+          "deltas": {},
+          "failure": {
+            "classification": "BundleFailure",
+            "signal": "not observed on-chain in window",
+            "slot": null
+          },
+          "bundleEventKinds": [],
+          "landed": false
+        },
+        {
+          "attemptNo": 3,
+          "signature": "21fD7qhBUiovr9q6guXjaLjc6xLyLmZBxXf94V17ro3dSLqGYntfBoqhVdBrivLLs7YVHPxenYXZ5a9btGL8qps7",
+          "tipLamports": 1214,
+          "expiry": {
+            "lastValidBlockHeight": 407777627,
+            "expiryBlockHeight": null
+          },
+          "stages": [
+            {
+              "stage": "submitted",
+              "slot": null,
+              "ts": "2026-06-29T16:51:23.852Z",
+              "latencyDeltaMs": null
+            }
+          ],
+          "deltas": {},
+          "bundleEventKinds": [],
+          "landed": false
+        }
+      ]
+    },
+    {
+      "idempotencyKey": "batch-6",
+      "attempts": [
+        {
+          "attemptNo": 1,
+          "signature": "2d3MjQe1d46VJWKbUFiYZJik7tCB3ye9u26cs5BvV5j7fxS98Yc7BVDKTvL8z5BpUcJACRH2h7FukpZM62dzdfhv",
+          "tipLamports": 1841,
+          "expiry": {
+            "lastValidBlockHeight": 407777874,
+            "expiryBlockHeight": null
+          },
+          "stages": [
+            {
+              "stage": "submitted",
+              "slot": null,
+              "ts": "2026-06-29T16:53:02.704Z",
+              "latencyDeltaMs": null
+            }
+          ],
+          "deltas": {},
+          "failure": {
+            "classification": "BundleFailure",
+            "signal": "not observed on-chain in window",
+            "slot": null
+          },
+          "bundleEventKinds": [],
+          "landed": false
+        },
+        {
+          "attemptNo": 2,
+          "signature": "4gapDehHMcmycC4e3yeVhha4k3mCwEk4nUPnurH9Rdc1WDtJUP5q2inyyGS7vf6WPtnRVdsXsCb7BdXvkoRrD8KE",
+          "tipLamports": 5500,
+          "expiry": {
+            "lastValidBlockHeight": 407777994,
+            "expiryBlockHeight": null
+          },
+          "stages": [
+            {
+              "stage": "submitted",
+              "slot": null,
+              "ts": "2026-06-29T16:53:52.373Z",
+              "latencyDeltaMs": null
+            }
+          ],
+          "deltas": {},
+          "failure": {
+            "classification": "BundleFailure",
+            "signal": "not observed on-chain in window",
+            "slot": null
+          },
+          "bundleEventKinds": [],
+          "landed": false
+        },
+        {
+          "attemptNo": 3,
+          "signature": "5wFBoiJSPAQD4b3REmrbmDfqwqtXMaCWd7BPEzaER8ScqMDU1ut9TCckvr8g3iUhZarFAMnxHDodgRyaSuyKDudG",
+          "tipLamports": 1275,
+          "expiry": {
+            "lastValidBlockHeight": 407778117,
+            "expiryBlockHeight": null
+          },
+          "stages": [
+            {
+              "stage": "submitted",
+              "slot": null,
+              "ts": "2026-06-29T16:54:41.211Z",
+              "latencyDeltaMs": null
+            }
+          ],
+          "deltas": {},
+          "failure": {
+            "classification": "BundleFailure",
+            "signal": "not observed on-chain in window",
+            "slot": null
+          },
+          "bundleEventKinds": [],
+          "landed": false
+        },
+        {
+          "attemptNo": 4,
+          "signature": "2xmbPq9QVUPiVJZH7i12JvaCWAg69bnrY6jp8kLSaerwG9CQDdkmmS8Qn3cW2dtpaEkphaspDzS7ZiPpucqHi6Ah",
+          "tipLamports": 9837,
+          "expiry": {
+            "lastValidBlockHeight": 407778242,
+            "expiryBlockHeight": null
+          },
+          "stages": [
+            {
+              "stage": "submitted",
+              "slot": null,
+              "ts": "2026-06-29T16:55:30.978Z",
+              "latencyDeltaMs": null
+            }
+          ],
+          "deltas": {},
+          "failure": {
+            "classification": "BundleFailure",
+            "signal": "not observed on-chain in window",
+            "slot": null
+          },
+          "bundleEventKinds": [],
+          "landed": false
+        }
+      ]
+    },
+    {
+      "idempotencyKey": "batch-7",
+      "attempts": [
+        {
+          "attemptNo": 1,
+          "signature": "47SaYW134LgRFKK322ugpseQwBUxwcAhYW4iC1Nnv6tU9PZUHedEcZDFT5LgyEYQwyf9TaHwgKvU4xwaAY2b942X",
+          "tipLamports": 1995,
+          "expiry": {
+            "lastValidBlockHeight": 407778360,
+            "expiryBlockHeight": null
+          },
+          "stages": [
+            {
+              "stage": "submitted",
+              "slot": null,
+              "ts": "2026-06-29T16:56:17.746Z",
+              "latencyDeltaMs": null
+            }
+          ],
+          "deltas": {},
+          "failure": {
+            "classification": "BundleFailure",
+            "signal": "not observed on-chain in window",
+            "slot": null
+          },
+          "bundleEventKinds": [],
+          "landed": false
+        },
+        {
+          "attemptNo": 2,
+          "signature": "23gPXyFYEcXEhsWCFoHgJQjJchKsXHnuJSZEKuZeQh8WTPXRkjh7WLzkYaANjYbSojoUXVQ6XSQXdzAfwTc7zRJm",
+          "tipLamports": 1995,
+          "expiry": {
+            "lastValidBlockHeight": 407778484,
+            "expiryBlockHeight": null
+          },
+          "stages": [
+            {
+              "stage": "submitted",
+              "slot": null,
+              "ts": "2026-06-29T16:57:07.023Z",
+              "latencyDeltaMs": null
+            }
+          ],
+          "deltas": {},
+          "failure": {
+            "classification": "BundleFailure",
+            "signal": "not observed on-chain in window",
+            "slot": null
+          },
+          "bundleEventKinds": [],
+          "landed": false
+        },
+        {
+          "attemptNo": 3,
+          "signature": "3AbvS65wuo4v44RoLsVVWy2WDaVJvdMs4uEddKH2f9bvTiWkqnYtfWuq8ttzfhyu9Bmj3qoQRuPym79C5qdQ2DdR",
+          "tipLamports": 6032,
+          "expiry": {
+            "lastValidBlockHeight": 407778608,
+            "expiryBlockHeight": null
+          },
+          "stages": [
+            {
+              "stage": "submitted",
+              "slot": null,
+              "ts": "2026-06-29T16:57:56.055Z",
+              "latencyDeltaMs": null
+            }
+          ],
+          "deltas": {},
+          "failure": {
+            "classification": "BundleFailure",
+            "signal": "not observed on-chain in window",
+            "slot": null
+          },
+          "bundleEventKinds": [],
+          "landed": false
+        },
+        {
+          "attemptNo": 4,
+          "signature": "4XeGHYeEwwn4DV81qBJBh5rnAi4PSrHa9YK4UznuhhtYNXFHyxJTycq9kLSnn4WhDPk3d3Vh598NZdnapp5TH8vf",
+          "tipLamports": 2394,
+          "expiry": {
+            "lastValidBlockHeight": 407778729,
+            "expiryBlockHeight": null
+          },
+          "stages": [
+            {
+              "stage": "submitted",
+              "slot": null,
+              "ts": "2026-06-29T16:58:44.813Z",
+              "latencyDeltaMs": null
+            }
+          ],
+          "deltas": {},
+          "failure": {
+            "classification": "BundleFailure",
+            "signal": "not observed on-chain in window",
+            "slot": null
+          },
+          "bundleEventKinds": [],
+          "landed": false
+        }
+      ]
+    },
+    {
+      "idempotencyKey": "batch-8",
+      "attempts": [
+        {
+          "attemptNo": 1,
+          "signature": "62re1Nb6scT99M278FDqknnaWJLsPTvM9q5kUMQQ5vp6GZtEE6L56QYjD8omtWnHvpDfPoBZqRXmZMwzHCYhFrs4",
+          "tipLamports": 2712,
+          "expiry": {
+            "lastValidBlockHeight": 407778849,
+            "expiryBlockHeight": null
+          },
+          "stages": [
+            {
+              "stage": "submitted",
+              "slot": null,
+              "ts": "2026-06-29T16:59:31.616Z",
+              "latencyDeltaMs": null
+            }
+          ],
+          "deltas": {},
+          "failure": {
+            "classification": "BundleFailure",
+            "signal": "not observed on-chain in window",
+            "slot": null
+          },
+          "bundleEventKinds": [],
+          "landed": false
+        },
+        {
+          "attemptNo": 2,
+          "signature": "24xJQtTmWyAGvgyCK5R5Li9tci1X3KDU9SAHEaeDdTSQjHivwgrGGDSbEKEh8Ahs8TW8zFKcyKSEt32RWYXZZfSE",
+          "tipLamports": 6628,
+          "expiry": {
+            "lastValidBlockHeight": 407778978,
+            "expiryBlockHeight": null
+          },
+          "stages": [
+            {
+              "stage": "submitted",
+              "slot": null,
+              "ts": "2026-06-29T17:00:22.377Z",
+              "latencyDeltaMs": null
+            }
+          ],
+          "deltas": {},
+          "failure": {
+            "classification": "BundleFailure",
+            "signal": "not observed on-chain in window",
+            "slot": null
+          },
+          "bundleEventKinds": [],
+          "landed": false
+        },
+        {
+          "attemptNo": 3,
+          "signature": "hosoXYGY4P6AGd4J7sGnfR8JFpNJdTjxyt9fkBs3uzB97kEQ5ev5pmSFYGLQwkD9NCJc5QP2EQaXaAX1ubLoLWc",
+          "tipLamports": 2882,
+          "expiry": {
+            "lastValidBlockHeight": 407779092,
+            "expiryBlockHeight": null
+          },
+          "stages": [
+            {
+              "stage": "submitted",
+              "slot": null,
+              "ts": "2026-06-29T17:01:11.551Z",
+              "latencyDeltaMs": null
+            }
+          ],
+          "deltas": {},
+          "failure": {
+            "classification": "BundleFailure",
+            "signal": "not observed on-chain in window",
+            "slot": null
+          },
+          "bundleEventKinds": [],
+          "landed": false
+        },
+        {
+          "attemptNo": 4,
+          "signature": "2gkTLZmTnVXPVHEKx2J598RKQk9JU5UV85QCkYadtCfcTKtPFW1t8tmEJ9ejct6mkBtyNG5F7xVjDnFcfiGLRPZY",
+          "tipLamports": 9993,
+          "expiry": {
+            "lastValidBlockHeight": 407779222,
+            "expiryBlockHeight": null
+          },
+          "stages": [
+            {
+              "stage": "submitted",
+              "slot": null,
+              "ts": "2026-06-29T17:02:03.139Z",
+              "latencyDeltaMs": null
+            }
+          ],
+          "deltas": {},
+          "failure": {
+            "classification": "BundleFailure",
+            "signal": "not observed on-chain in window",
+            "slot": null
+          },
+          "bundleEventKinds": [],
+          "landed": false
+        }
+      ]
+    },
+    {
+      "idempotencyKey": "batch-9",
+      "attempts": [
+        {
+          "attemptNo": 1,
+          "signature": "3nqqsL9WmBXRDLxkT8oe75WTFUxoNezeJzzscZn7bofa3PAHhBwNZfcwTtdVQ7ESv6CDw8hksp4X7aqEaJxrpXi",
+          "tipLamports": 8507,
+          "expiry": {
+            "lastValidBlockHeight": 407779334,
+            "expiryBlockHeight": null
+          },
+          "stages": [
+            {
+              "stage": "submitted",
+              "slot": null,
+              "ts": "2026-06-29T17:02:50.054Z",
+              "latencyDeltaMs": null
+            }
+          ],
+          "deltas": {},
+          "bundleEventKinds": [],
+          "landed": false
+        },
+        {
+          "attemptNo": 4,
+          "signature": "5UFVAwTdbcSXktnxHYUiGLyzKpLdSPvXdpC3yKT7mJRWvi9yJfzSy389m2NKf1mpuiuJKWS61ukN8kenMyi5unSH",
+          "tipLamports": 10000,
+          "expiry": {
+            "lastValidBlockHeight": 407779700,
+            "expiryBlockHeight": null
+          },
+          "stages": [
+            {
+              "stage": "submitted",
+              "slot": null,
+              "ts": "2026-06-29T17:05:23.658Z",
+              "latencyDeltaMs": null
+            }
+          ],
+          "deltas": {},
+          "failure": {
+            "classification": "BundleFailure",
+            "signal": "not observed on-chain in window",
+            "slot": null
+          },
+          "bundleEventKinds": [],
+          "landed": false
+        }
+      ]
+    }
+  ]
+}
