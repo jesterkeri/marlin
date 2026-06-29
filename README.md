@@ -4,6 +4,18 @@ Streams live slot + leader data over **Yellowstone gRPC (Geyser)**, submits **re
 
 See `Architecture.md` for the system design; `CLAUDE_CODE_BUILD_BRIEF.md` for the build spec.
 
+## What sets this apart
+
+Most "transaction stacks" are a checklist of builders and helpers. Marlin goes deep on the parts that actually decide whether a transaction lands, and proves each one:
+
+- **Real-time network awareness, not just sending.** Live Yellowstone gRPC (Geyser) streaming of slots and leaders, with submission targeted into the **Jito leader window** (`getNextScheduledLeader` plus window math), because a bundle only lands if the scheduled Jito leader produces that block.
+- **Dynamic tips, never hardcoded.** Tips come from the live Jito tip-floor plus network congestion, and a raw model number can become an executable tip only through one clamped mint path (a branded `TipLamports`), bounded by a hard cap.
+- **Fork-safe finalization.** `processed` is observed from the stream for the earliest timestamp, but `confirmed` and `finalized` come only from the authoritative per-signature RPC reconcile. Commitment is never inferred from a slot number, so a transaction is never reported finalized off a fork it did not land on.
+- **One bounded, auditable AI decision.** When a bundle fails (including a deliberately injected blockhash expiry), the agent reasons about the cause and chooses the tip and retry timing inside a deterministic safety envelope: the classifier and the mandatory blockhash refresh are code, the AI owns only the discretionary call, and a malformed AI response degrades to a safe deterministic retry.
+- **Proof, not promises.** 76 offline tests cover the entire decision and safety surface, and `npm run demo` runs the real engine end to end on in-memory fakes (no RPC, no wallet, no key) so the whole leader-window to AI-retry to finalized story plays out in your terminal in seconds.
+
+> **Try it in 5 seconds, zero setup:** `npm install && npm run demo`
+
 ## Setup
 
 ```bash
@@ -17,7 +29,7 @@ npm run db:init          # apply the schema to local Postgres
 npm run dev              # start the engine + read dashboard
 ```
 
-**No creds? See it work anyway.** `npm test` verifies the entire decision/safety surface offline (75 tests), and `npm run demo` runs the *real* engine path end-to-end on in-memory fakes — only the network boundary (RPC/Jito/Geyser/Postgres/LLM) is stubbed. The live, explorer-verifiable run (`npm run run:batch`) needs the creds above plus a VPS that holds the persistent gRPC stream.
+**No creds? See it work anyway.** `npm test` verifies the entire decision/safety surface offline (76 tests), and `npm run demo` runs the *real* engine path end-to-end on in-memory fakes — only the network boundary (RPC/Jito/Geyser/Postgres/LLM) is stubbed. The live, explorer-verifiable run (`npm run run:batch`) needs the creds above plus a host that holds the persistent gRPC stream.
 
 ## Verification gates
 
