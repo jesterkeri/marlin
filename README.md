@@ -2,6 +2,10 @@
 
 Streams live slot + leader data over **Yellowstone gRPC (Geyser)**, submits **real Jito bundles** on **mainnet-beta** with **dynamically computed tips** (no hardcoded values, ever), tracks each transaction's full lifecycle (`submitted → processed → confirmed → finalized`) — **stream-first** for the earliest `processed` observation, with an authoritative per-signature RPC reconcile driving `confirmed → finalized` (commitment is never inferred from slot numbers alone) — classifies failures and retries automatically, and lets one bounded **AI agent** own a single operational decision — *Autonomous Retry with Fault Injection* — within a deterministic safety envelope.
 
+![Marlin running the full engine on in-memory fakes: leader window, dynamic tip, an injected blockhash expiry, the bounded AI retry decision, and finalization](demo.gif)
+
+*`npm run demo` runs the real engine end to end with no RPC, wallet, or API key. Only the network boundary is faked.*
+
 See `Architecture.md` for the system design; `CLAUDE_CODE_BUILD_BRIEF.md` for the build spec.
 
 ## What sets this apart
